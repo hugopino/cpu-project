@@ -1,0 +1,42 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/cpudb
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: rootcpudb
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+      SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL: "true"
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.PostgreSQL81Dialect
+      SPRING_DEVTOOLS_RESTART_ENABLED: "true"
+    depends_on:
+      - db
+  db:
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: rootcpudb
+      POSTGRES_DB: cpudb
+    ports:
+      - "5432:5432"
+    volumes:
+      - db:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.admin
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "9090:80"
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    depends_on:
+      - db
+
+volumes:
+  db:
+  pgadmin:
