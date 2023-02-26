@@ -1,27 +1,24 @@
 import { Button, Modal, TextInput, Label, Select } from "flowbite-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { updateData, closeModal, deleteData } from "./modalFunctions";
 
 export default function CPUEditInfoModal(props) {
-  const onClick = () => {
-    setDataSaved(true);
-  };
-  const onClose = () => {
-    props.setShowModal(false);
-    setDataSaved(false);
-  };
-  const onDiscard = () => {
-    props.setShowModal(false);
-    setDataSaved(false);
-  };
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
+    id: props.id,
+    model: props.model,
     clockspeed: props.clockspeed,
+    brand: props.brand,
     cores: props.cores,
     tdp: props.tdp,
     socket: props.socket,
-    clockspeed_unit: props.clockspeed_unit,
+    clockspeedUnit: props.clockspeedUnit,
+    aviableSockets: props.aviableSockets,
     threads: props.threads,
-    price_EUR: props.price_EUR,
-    buy_link: props.buy_link,
+    price: props.price,
+    buyLink: props.buyLink,
   });
   const onInputChange = (event) => {
     const { name, value } = event.target;
@@ -30,7 +27,10 @@ export default function CPUEditInfoModal(props) {
   const [dataSaved, setDataSaved] = useState(false);
   return (
     <>
-      <Modal show={props.showModal} onClose={onClose}>
+      <Modal
+        show={props.showModal}
+        onClose={() => closeModal(props, setDataSaved)}
+      >
         <Modal.Header>
           Edit {props.brand} {props.model}
           {dataSaved && (
@@ -81,24 +81,25 @@ export default function CPUEditInfoModal(props) {
                 required={true}
               >
                 <option>{props.socket}</option>
-                <option>Socket 2</option>
+
+                {props.aviableSockets
+                  .filter((socket) => socket !== props.socket)
+                  .map((socket) => {
+                    return <option key={socket}>{socket}</option>;
+                  })}
               </Select>
             </div>
 
             <div className="mx-4">
-              <Label
-                htmlFor="clock-speed-unit"
-                value="Select ClockSpeed Unit"
-              />
-              <Select
-                name="clockspeed_unit"
-                value={formData.clockspeed_unit}
+              <Label htmlFor="clockspeedUnit" value="ClockSpeed Unit" />
+              <TextInput
+                name="clockspeedUnit"
+                type="text"
+                placeholder={props.clockspeedUnit}
+                value={formData.clockspeedUnit}
                 onChange={onInputChange}
                 required={true}
-              >
-                <option>{props.clockspeed_unit}</option>
-                <option>MHz</option>
-              </Select>
+              />
 
               <Label htmlFor="threads" value="Threads" />
               <TextInput
@@ -112,20 +113,20 @@ export default function CPUEditInfoModal(props) {
 
               <Label htmlFor="price" value="€ Price" />
               <TextInput
-                name="price_EUR"
+                name="price"
                 type="number"
-                placeholder={props.price_EUR}
-                value={formData.price_EUR}
+                placeholder={props.price}
+                value={formData.price}
                 onChange={onInputChange}
                 required={true}
               />
 
-              <Label htmlFor="buy-link" value="Buy Link" />
+              <Label htmlFor="buyLink" value="Buy Link" />
               <TextInput
-                name="buy_link"
+                name="buyLink"
                 type="url"
-                placeholder={props.buy_link}
-                value={formData.buy_link}
+                placeholder={props.buyLink}
+                value={formData.buyLink}
                 onChange={onInputChange}
                 required={true}
               />
@@ -134,9 +135,11 @@ export default function CPUEditInfoModal(props) {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button onClick={onClick}>Save Changes</Button>
-          <Button color="gray" onClick={onDiscard}>
-            Discard
+          <Button onClick={() => updateData(props, formData, setDataSaved)}>
+            Save Changes
+          </Button>
+          <Button color="failure" onClick={() => deleteData(props, navigate)}>
+            Delete
           </Button>
         </Modal.Footer>
       </Modal>

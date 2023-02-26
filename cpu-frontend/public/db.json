@@ -1,43 +1,139 @@
 {
   "CPUs": [
     {
-      "id": "1",
-      "brand": "Intel",
-      "model": "Core i9-11900K",
-      "socket": "LGA1200",
-      "clockspeed": 3.5,
-      "clockspeed_unit": "GHz",
-      "cores": 8,
-      "threads": 16,
-      "tdp": 125,
-      "price_EUR": 550,
-      "buy_link": "https://www.amazon.de/s?k=Core+i9-11900K"
-    },
-    {
-      "id": "2",
       "brand": "AMD",
       "model": "Ryzen 9 5900X",
       "socket": "AM4",
       "clockspeed": 3.7,
-      "clockspeed_unit": "GHz",
+      "clockspeedUnit": "GHz",
       "cores": 12,
       "threads": 24,
       "tdp": 105,
-      "price_EUR": 700,
-      "buy_link": "https://www.amazon.de/s?k=Ryzen+9+5900X"
+      "price": 549.99,
+      "buyLink": "https://www.amazon.de/s?k=Ryzen+9+5900X",
+      "aviableSockets": ["AM4", "AM3"]
     },
     {
-      "id": "3",
       "brand": "Intel",
-      "model": "Core i5-11600K",
+      "model": "Core i7-11700K",
       "socket": "LGA1200",
-      "clockspeed": 3.9,
-      "clockspeed_unit": "GHz",
+      "clockspeed": 3.6,
+      "clockspeedUnit": "GHz",
+      "cores": 8,
+      "threads": 16,
+      "tdp": 125,
+      "price": 399.99,
+      "buyLink": "https://www.amazon.de/s?k=Core+i7-11700K",
+      "aviableSockets": ["LGA1151", "LGA1200", "AM4"]
+    },
+    {
+      "brand": "AMD",
+      "model": "Ryzen 7 5800X",
+      "socket": "AM4",
+      "clockspeed": 3.8,
+      "clockspeedUnit": "GHz",
+      "cores": 8,
+      "threads": 16,
+      "tdp": 105,
+      "price": 429.99,
+      "buyLink": "https://www.amazon.de/s?k=Ryzen+7+5800X",
+      "aviableSockets": ["AM4", "AM3"]
+    },
+
+    {
+      "brand": "Intel",
+      "model": "Core i9-11900K",
+      "socket": "LGA1200",
+      "clockspeed": 3.5,
+      "clockspeedUnit": "GHz",
+      "cores": 8,
+      "threads": 16,
+      "tdp": 125,
+      "price": 599.99,
+      "buyLink": "https://www.amazon.de/s?k=Core+i9-11900K",
+      "aviableSockets": ["LGA1151", "LGA1200", "AM4"]
+    },
+
+    {
+      "brand": "AMD",
+      "model": "Ryzen Threadripper 3990X",
+      "socket": "sTRX4",
+      "clockspeed": 2.9,
+      "clockspeedUnit": "GHz",
+      "cores": 64,
+      "threads": 128,
+      "tdp": 280,
+      "price": 3999.99,
+      "buyLink": "https://www.amazon.de/s?k=Ryzen+Threadripper+3990X",
+      "aviableSockets": ["sTRX4"]
+    },
+
+    {
+      "brand": "Intel",
+      "model": "Xeon W-2295",
+      "socket": "LGA2066",
+      "clockspeed": 3.0,
+      "clockspeedUnit": "GHz",
+      "cores": 18,
+      "threads": 36,
+      "tdp": 165,
+      "price": 1499.99,
+      "buyLink": "https://www.amazon.de/s?k=Xeon+W-2295",
+      "aviableSockets": ["LGA2066"]
+    },
+
+    {
+      "brand": "AMD",
+      "model": "Ryzen 5 5600X",
+      "socket": "AM4",
+      "clockspeed": 3.7,
+      "clockspeedUnit": "GHz",
       "cores": 6,
       "threads": 12,
-      "tdp": 125,
-      "price_EUR": 300,
-      "buy_link": "https://www.amazon.de/s?k=Core+i5-11600K"
+      "tdp": 65,
+      "price": 299.99,
+      "buyLink": "https://www.amazon.de/s?k=Ryzen+5+5600X",
+      "aviableSockets": ["AM4", "AM3"]
+    },
+    {
+      "brand": "Apple",
+      "model": "M1 Max",
+      "socket": "BGA",
+      "clockspeed": 3.2,
+      "clockspeedUnit": "GHz",
+      "cores": 10,
+      "threads": 20,
+      "tdp": 45,
+      "price": 1699.99,
+      "buyLink": "https://www.apple.com/mac/m1/max/",
+      "aviableSockets": ["BGA"]
+    },
+
+    {
+      "brand": "Qualcomm",
+      "model": "Snapdragon 8cx Gen 3",
+      "socket": "BGA",
+      "clockspeed": 2.7,
+      "clockspeedUnit": "GHz",
+      "cores": 8,
+      "threads": 8,
+      "tdp": 7,
+      "price": 999.99,
+      "buyLink": "https://www.qualcomm.com/products/snapdragon-8cx-gen-3-compute-platform",
+      "aviableSockets": ["BGA"]
+    },
+    {
+      "brand": "Samsung",
+      "model": "Exynos 2200",
+      "socket": "BGA",
+      "clockspeed": 2.9,
+      "clockspeedUnit": "GHz",
+      "cores": 6,
+      "threads": 12,
+      "tdp": 10,
+      "price": 799.99,
+      "buyLink": "https://www.samsung.com/semiconductor/minisite/exynos/products/mobileprocessor/exynos-2200/",
+      "aviableSockets": ["BGA"]
     }
   ]
 }

@@ -1,6 +1,6 @@
 import CPUList from "./components/CPUList";
 import { Route, Routes } from "react-router-dom";
-import CPUModel from "./components/CPUModel";
+import CPUModel from "./components/CPU/CPUModel";
 
 function App() {
   return (
