@@ -10,6 +10,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/v1/cpu")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CPUContoller {
     @Autowired
     CPUService cpuService;
