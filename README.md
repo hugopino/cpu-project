@@ -9,7 +9,7 @@ Technical exercise for internship at [Nubedian](https://nubedian.de/).
 2. Navigate to the backend folder:
    `cd cpu-backend`
 3. Start the Docker containers:
-   `docker compose up -d`
+   `docker compose built && docker compose up -d`
 4. Navigate to the frontend folder:
    `cd ../cpu-frontend`
 5. Install the necessary packages:
