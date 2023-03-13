@@ -1,17 +1,21 @@
 package de.nubedian.cpubackend.CPU;
 
+import de.nubedian.cpubackend.Socket.Socket;
 import jakarta.persistence.*;
 
 import java.util.List;
 
+
 @Entity
 @Table(name = "cpustable")
 public class CPU {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String brand;
     private String model;
-    private String socket;
+
     private double clockspeed;
     private String clockspeedUnit;
     private int cores;
@@ -19,19 +23,19 @@ public class CPU {
     private int tdp;
     private double price;
     private String buyLink;
-    @ElementCollection
-    private List<String> aviableSockets;
+    @ManyToOne
+    @JoinColumn(name = "socket_id")
+    private Socket socket;
 
 
     public CPU() {
 
     }
 
-    public CPU(int id, String brand, String model, String socket, double clockspeed, String clockspeedUnit, int cores, int threads, int tdp, double price, String buyLink, List<String> aviableSockets) {
-        this.id = id;
+    public CPU(String brand, String model, double clockspeed, String clockspeedUnit, int cores, int threads, int tdp, double price, String buyLink) {
+
         this.brand = brand;
         this.model = model;
-        this.socket = socket;
         this.clockspeed = clockspeed;
         this.clockspeedUnit = clockspeedUnit;
         this.cores = cores;
@@ -39,7 +43,6 @@ public class CPU {
         this.tdp = tdp;
         this.price = price;
         this.buyLink = buyLink;
-        this.aviableSockets = aviableSockets;
     }
 
     @Id
@@ -68,13 +71,8 @@ public class CPU {
         this.model = model;
     }
 
-    public String getSocket() {
-        return socket;
-    }
 
-    public void setSocket(String socket) {
-        this.socket = socket;
-    }
+
 
     public double getClockspeed() {
         return clockspeed;
@@ -132,11 +130,28 @@ public class CPU {
         this.buyLink = buyLink;
     }
 
-    public List<String> getAviableSockets() {
-        return aviableSockets;
+    public Socket getSocket() {
+        return socket;
     }
 
-    public void setAviableSockets(List<String> aviableSockets) {
-        this.aviableSockets = aviableSockets;
+    public void setSocket(Socket socket) {
+        this.socket = socket;
+    }
+
+    @Override
+    public String toString() {
+        return "CPU{" +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", clockspeed=" + clockspeed +
+                ", clockspeedUnit='" + clockspeedUnit + '\'' +
+                ", cores=" + cores +
+                ", threads=" + threads +
+                ", tdp=" + tdp +
+                ", price=" + price +
+                ", buyLink='" + buyLink + '\'' +
+                ", socket=" + socket +
+                '}';
     }
 }
